@@ -1,10 +1,13 @@
-====================================================
-Starting a New Machine Learning Project (Complete Workflow)
-====================================================
+## Starting a New Machine Learning Project (Complete Workflow)
+
 
 * Outline: 
     - Making an environment
     - Maiking a github repository
+    - Make ``setup.py`` and ``requirements.txt``
+    - Make a source folder
+    - Making a function for package organization
+
 
 1. Making an environment
     - 1.1: Create a project folder
@@ -36,7 +39,14 @@ Starting a New Machine Learning Project (Complete Workflow)
         It cfan be checked by: ``git remote -v``
 
     - 2.5: Create .gitignore
-        Make a file called: ``.gitignore`` and write ``venv/`` in the file. 
+        Go to github. 
+        Create a new file, name it .gitignore, and choose language as Python. 
+
+        Then in VSCode do: 
+            first time: ``git pull origin main``
+            after: ``git pull``
+
+        To put the files you made on github on your local env of VSCode.
 
         Why? Because venv is systemp dependent and you may have python 3.6 but it won't work on other systems if they differ, so the best practice is to make the requirment.txt. 
 
@@ -52,6 +62,37 @@ Starting a New Machine Learning Project (Complete Workflow)
     - 2.9: Push
         first time: ``git push -u origin main ``
         after: ``git push``
+
+3. Make ``setup.py`` and ``requirements.txt``
+    **Importance of setup.py**: 
+        - It tells Python how to package/install the project
+        - It can be upload to PyPi, and others can download it using: ``pip install your-package``. 
+
+    **Importance of requirement.txt**: 
+
+    - 3.1: Make a file name ``setup.py``
+    - 3.2: Import the setup libarary:
+        ``from setuptools import find_packages,setup``
+    - 3.3: write the setup information:
+        ``setup(name,version,...)``
+    
+4. Make a source folder: 
+    This is a folder where your actual source code such as like data cleaening, your ML model, are inside. 
+    
+    - 4.1: Make a folder named `src`
+    - 4.2: Make a ``__init__.py`` file. This make src as a package. 
+
+5. Making a function for package organization
+    Adding the required packages to the list ``install_requires`` can be inefficient if you have a lot of packages. So we make a function to deal with it. 
+
+    - 5.1: Change the list for `install_requirments` to a function named `get_requirments('requirements.txt')`
+
+    - 5.2: Make the function + add the required libaries for it:  `` from typing import List ``
+
+    - 5.3: Define the function:
+        `` def get_requirements(file_path:str)->List[str]: ``
+
+
 
 
 
