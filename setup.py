@@ -4,10 +4,12 @@ from typing import List
 
 HYPHEN_E_DOT = "-e ."
 
-
 def get_requirements(file_path: str) -> List[str]:
     """
     Read the requirements file and return the package names as a list.
+
+    get_requirements: file[str] -> List[str]
+                      requirements.txt -> ['pandas', 'numpy', ...]
     """
 
     requirements = []
@@ -24,7 +26,14 @@ def get_requirements(file_path: str) -> List[str]:
 
     return requirements
 
+## pip is going to do the installation
+## setup will just give the information of the 
+## project to pip, so pip can download it. 
 
+## Why do we need -e . in requirment.txt
+## because when we do pip install -r requirements.txt, 
+## we don't want to just have the libraries and packages downloaded
+## we want the package to be downloaded as well. 
 setup(
     name="Generic-ML-Project",
     version="0.0.1",
