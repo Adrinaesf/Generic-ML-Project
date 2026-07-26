@@ -1,9 +1,11 @@
 import sys
+import logging
+from src.logger import logging
 
 '''
 This function will return the error messaged and the inforamtion regarding the error. 
 error_message_detail: Exception, sys -> String
-Example: ZeroDivisionError, error:detail -> "Error occured in ..."
+Example: ZeroDivisionError, error:detail -> "Error ßoccured in ..."
 
 helper functions: 
     - sys.exc_info() -> (type, error_message, traceback)
@@ -39,3 +41,11 @@ class CustomeException(Exception): # Same as class CustomException extends Excep
 
     def __str__(self):
         return self.error_message
+
+
+if __name__=="__main__":
+    try:
+        a = 1/0
+    except Exception as e:
+        logging.info("Divide by zero")
+        raise CustomeException(e, sys)
